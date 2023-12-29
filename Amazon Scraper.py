@@ -6,7 +6,7 @@ from selenium.webdriver.edge.options import Options as EdgeOptions
 from selenium.common.exceptions import NoSuchElementException
 import datetime
 
-items = ["B09VCJ171S"]
+items = ["B0BR88R74Y","B09M5ZHWTL"]
 
 options = EdgeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])#exclude Devtools logs
@@ -54,31 +54,31 @@ for it in items:
     # Try to get the price
 
 
-try:
-    price_element = driver.find_element(By.CSS_SELECTOR, '.a-price-whole')
-    price_text = price_element.text.strip()  # Get the text of the price element
-    price = price_text.replace(',', '')  # Remove commas from the price if present
-    print("found it:", price)  # Add a print statement for the extracted price
-except NoSuchElementException:
-    print("Price not found or element structure changed")
+    try:
+        price_element = driver.find_element(By.CSS_SELECTOR, '.a-price-whole')
+        price_text = price_element.text.strip()  # Get the text of the price element
+        price = price_text.replace(',', '')  # Remove commas from the price if present
+        print("found it:", price)  # Add a print statement for the extracted price
+    except NoSuchElementException:
+        print("Price not found or element structure changed")
 
 
 
-# Get the current date and time
-created_at = datetime.datetime.now()
+    # Get the current date and time
+    created_at = datetime.datetime.now()
 
-# Get the searched text
-search_text = title.split(",")[0]
+    # Get the searched text
+    search_text = title.split(",")[0]
 
-# Set the source
-source = "https://www.amazon.in/"
+    # Set the source
+    source = "https://www.amazon.in/"
 
-# Print the scraped information to the terminal
-print("Name:", title)
-print("Image Source:", image_url)
-print("URL:", url)
-print("Price:", price)
-print("Created At:", created_at)
-print("Searched Text:", search_text)
-print("Source:", source)
-print("\n")
+    # Print the scraped information to the terminal
+    print("Name:", title)
+    print("Image Source:", image_url)
+    print("URL:", url)
+    print("Price:", price)
+    print("Created At:", created_at)
+    print("Searched Text:", search_text)
+    print("Source:", source)
+    print("\n")
