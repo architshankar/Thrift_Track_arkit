@@ -18,7 +18,7 @@ driver = webdriver.Chrome(options=options)
 
 for url in items:
     # Open the browser page
-    driver.get(url)
+    driver.get(url) 
 
     # Wait for the element with class 'pdp-price' to be visible
     WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.CLASS_NAME, "pdp-price")))
@@ -27,7 +27,7 @@ for url in items:
     try:
         title_element = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "pdp-title")))
         title = title_element.text.strip() if title_element else "Title not found"
-        print("Product Title:", title)
+        print("Product Titlle:", title)
     except NoSuchElementException:
         print("Title element not found.")
 
