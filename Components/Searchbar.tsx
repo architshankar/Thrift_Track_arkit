@@ -1,5 +1,7 @@
 'use client'
 
+import { scrapeAndStoreProduct } from "@/lib/actions"
+import { scrapeAmazonProduct } from "@/lib/scraper"
 import { useSelectedLayoutSegment } from "next/navigation"
 import { hostname } from "os"
 import { FormEvent, useState } from "react"
@@ -41,17 +43,18 @@ const Searchbar = () => {
   
   const [SearchPrompt, setSearchPrompt] = useState(' ')
   const [isLoading, setisLoading] = useState(false)
-  const handleSubmit =(event: FormEvent<HTMLFormElement>)=>{
+  const handleSubmit =async (event: FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
     // this is used so that it dosent reload while it is submitted
     
     const isValidLink= isValidAmazonLink(SearchPrompt)
     // check Link - https://www.amazon.in/Colombian-Hazelnut-Instant-Coffee-Sachets
     if(!isValidLink) return alert('Please enter a valid amazon link')
-    else alert("valid")
+    //else alert("valid")
     try {
       setisLoading(true)
       //scraping begins here
+      const poduct = await scrapeAndStoreProduct(SearchPrompt) 
 
     } catch (error) {
       console.log(error)
