@@ -1,4 +1,5 @@
 export type PriceHistoryItem = {
+    date: string;
     price: number;
   };
   
@@ -17,11 +18,12 @@ export type PriceHistoryItem = {
     priceHistory: PriceHistoryItem[] | [];
     highestPrice: number;
     lowestPrice: number;
-    averagePrice: number;
+    average: number;
     discountRate: number;
     description: string;
     category: string;
     reviewsCount: number;
+    deliveryText: string;
     stars: number;
     isOutOfStock: Boolean;
     users?: User[];

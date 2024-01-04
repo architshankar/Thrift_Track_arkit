@@ -38,12 +38,13 @@ export function extractCurrency(element: any) {
 
 // Extracts description from two possible elements from amazon
 export function extractDescription($: any) {
-  // these are possible elements holding description of the product
   const selectors = [
-    ".a-unordered-list .a-list-item",
+    ".a-unordered-list .a-spacing-mini .a-list-item",
     ".a-expander-content p",
     // Add more selectors here if needed
   ];
+
+  let description = "";
 
   for (const selector of selectors) {
     const elements = $(selector);
@@ -51,14 +52,14 @@ export function extractDescription($: any) {
       const textContent = elements
         .map((_: any, element: any) => $(element).text().trim())
         .get()
-        .join("\n");
-      return textContent;
+        .join("\n"); // Adjust how you want to join text content here
+      description += textContent + "\n\n"; // Add line breaks or any desired formatting
     }
   }
 
-  // If no matching elements were found, return an empty string
-  return "";
+  return description.trim(); // Trim extra spaces at the start or end
 }
+
 
 export function getHighestPrice(priceList: PriceHistoryItem[]) {
   let highestPrice = priceList[0];

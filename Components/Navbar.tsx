@@ -11,7 +11,7 @@ const navIcons = [
 
 const Navbar = () => {
   return (
-    <header className='w-full'>
+    <header className='w-full border-y border-y-[#E4E4E4]'>
         <nav className='nav'>
             <Link href='/' className='flex items-center gap-1'>   
                 <Image 
@@ -24,7 +24,7 @@ const Navbar = () => {
                     Thrift<span className='text-primary'>Track</span>
                 </p>
             </Link>
-            <div className='flex item-center gap-7'>
+            <div className='flex item-center gap-10'>
                 {navIcons.map((icon)=>(
                     <Image
                         key = {icon.alt}
