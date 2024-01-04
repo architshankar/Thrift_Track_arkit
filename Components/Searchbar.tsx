@@ -41,7 +41,7 @@ parsedURL.search returns the query string ('?key=value' in this case).
 
 const Searchbar = () => {
   
-  const [SearchPrompt, setSearchPrompt] = useState(' ')
+  const [SearchPrompt, setSearchPrompt] = useState('')
   const [isLoading, setisLoading] = useState(false)
   const handleSubmit =async (event: FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
@@ -68,20 +68,20 @@ const Searchbar = () => {
     className='flex flex-wrap gap-4 mt-12' 
     onSubmit={handleSubmit}
     >
-        <input 
-        type="text"
-        value={SearchPrompt}
-        onChange={(e)=>setSearchPrompt(e.target.value)}
-        placeholder="Enter product Link"
-        className="searchbar-input"
-        />
-        <button 
-            type="submit"
-            className="searchbar-btn"
-            disabled={SearchPrompt === ''}
-          >
-            {isLoading ? "Searching..." : "Search"}
-        </button>
+      <input 
+      type="text"
+      value={SearchPrompt}
+      onChange={(e)=>setSearchPrompt(e.target.value)}
+      placeholder="Enter product Link"
+      className="searchbar-input"
+      />
+      <button 
+        type="submit"
+        className="searchbar-btn"
+        disabled={SearchPrompt === ''}
+        >
+          {isLoading ? "Searching..." : "Search"}
+      </button>
 
     </form>
   )

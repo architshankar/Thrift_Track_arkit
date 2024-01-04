@@ -23,7 +23,7 @@ export async function scrapeAndStoreProduct(productURL: string){
       if(existingProduct) {
         const updatedPriceHistory: any = [
           ...existingProduct.priceHistory,
-          { price: scrapedProduct.currentPrice }
+            { price: scrapedProduct.currentPrice }
         ]
   
         product = {
@@ -70,6 +70,23 @@ export async function getAllProducts() {
     connectToDB();
     const products = await Product.find()
     return products
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+
+export async function getSimilarProducts(productID: string) {
+  try {
+    connectToDB();
+    const currentProducts = await Product.findById(productID)
+    if(!currentProducts) return null
+
+    const similarProduct = await Product.find({
+      _id: {$ne: productID}
+    }).limit(3)
+    return similarProduct
   } catch (error) {
     console.log(error)
   }

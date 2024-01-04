@@ -44,7 +44,6 @@ const Home = async () => {
                 <ProductCard  key ={product._id} product = {product} />
               ))
             }
-
           </div>
       </section>
 

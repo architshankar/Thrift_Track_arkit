@@ -20,7 +20,7 @@ const productSchema = new mongoose.Schema({
     description: { type: String },
     reviewsCount: { type: Number },
     users: [
-        { emails: { type: String, required: true } }
+        { emails: { type: String, required: true } } 
     ],
 }, { timestamps: true });
 
