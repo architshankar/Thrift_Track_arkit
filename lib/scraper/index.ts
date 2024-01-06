@@ -29,6 +29,16 @@ export async function scrapeAmazonProduct(url: string){
             console.log('Delivery information not found.');
         }
 
+        const reviewsCountElement = $('#acrCustomerReviewText'); // Select the element with ID acrCustomerReviewText
+
+        // Extract the text content if the element exists
+        let reviewsCountValue = '';
+        if (reviewsCountElement.length > 0) {
+            reviewsCountValue = reviewsCountElement.text().trim(); // Get the text content and remove leading/trailing spaces
+        
+            // Remove non-numeric characters (like commas) from the string to extract only the number
+            reviewsCountValue = reviewsCountValue.replace(/\D/g, ''); // Replace non-digits with an empty string
+        }
 
         const originalPrice = extractPrice(
             $('#priceblock_ourprice'),
@@ -54,6 +64,7 @@ export async function scrapeAmazonProduct(url: string){
         // transfer all the data to a data object 
 
         const description =  extractDescription($)
+        const reviewsCount = parseInt(reviewsCountValue, 10);
 
         const data={
             url,
@@ -64,15 +75,16 @@ export async function scrapeAmazonProduct(url: string){
             originalPrice: Number(originalPrice) || Number(originalPrice),
             priceHistory: [],
             discountRate: Number(discountRate),
-            reviewsCount:100,
+            reviewsCount,
             isOutOfStock: outOfStock,
             deliveryText,
             description,
             lowestPrice: Number(currentPrice) || Number(originalPrice),
             highestPrice: Number(originalPrice) || Number(currentPrice),
             average: Number(currentPrice) || Number(originalPrice)
+            
         }
-        //console.log(data)
+        console.log(data)
         return data
     } catch (error:any) {
         throw new Error(`failed to scrape the data : ${error.message}`)

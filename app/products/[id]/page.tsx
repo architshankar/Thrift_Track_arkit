@@ -1,7 +1,6 @@
 // in Next.js, square brackets [id] in the folder name could indicate a dynamic route parameter. When a URL matches this pattern (/products/[id]/page.tsx), it suggests that id is a variable segment of the URL, and the corresponding page component (page.tsx) would be responsible for rendering content based on the value of id.
 
 import Modal from '@/Components/Modal'
-import PriceHistoryChart from '@/Components/PriceHistoryChart '
 import PriceInfoCard from '@/Components/PriceInfoCard'
 import ProductCard from '@/Components/productCard'
 import {getPruductByID, getSimilarProducts} from '@/lib/actions'
@@ -52,6 +51,9 @@ const ProductDeatails = async ({params: {id}}:Props) => {
                   width={20}
                   height={20}
                 />
+                <p className="text-base font-semibold text-[#D46F77]">
+                  {product.reviewsCount}
+                </p>
               </div>
               <div className='p-2 bg-white-200 rounded-10'>
                 <Image
@@ -120,7 +122,7 @@ const ProductDeatails = async ({params: {id}}:Props) => {
                   value={`${product.currency} ${formatNumber(product.lowestPrice)}`}
               />
             </div>
-            <Modal/>
+            <Modal productId={id}/>
         </div>
         {/*<PriceHistoryChart priceHistory={product.priceHistory} />*/}
       </div>
