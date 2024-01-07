@@ -11,7 +11,7 @@ interface Props{
 
 const ProductCard = ({product}:Props) => {
   return (
-    <Link href= {`/products/${product._id}`} className='product-card'>
+    <Link href= {`/products/${product._id}`} className='product-card Product-card-update'>
         <div className='product-card_img-container'>
             <Image
                 src={product.image}

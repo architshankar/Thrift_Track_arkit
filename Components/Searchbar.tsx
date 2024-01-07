@@ -43,6 +43,9 @@ const Searchbar = () => {
   
   const [SearchPrompt, setSearchPrompt] = useState('')
   const [isLoading, setisLoading] = useState(false)
+  const [productAdded, setProductAdded] = useState(false);
+
+
   const handleSubmit =async (event: FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
     // this is used so that it dosent reload while it is submitted
@@ -55,6 +58,7 @@ const Searchbar = () => {
       setisLoading(true)
       //scraping begins here
       const poduct = await scrapeAndStoreProduct(SearchPrompt) 
+      setProductAdded(true);
 
     } catch (error) {
       console.log(error)
@@ -64,6 +68,7 @@ const Searchbar = () => {
   }
 
   return (
+    <div>
     <form 
     className='flex flex-wrap gap-4 mt-12' 
     onSubmit={handleSubmit}
@@ -84,7 +89,12 @@ const Searchbar = () => {
       </button>
 
     </form>
-  )
-}
+    {productAdded && (
+      <p className=" self-center product-added mt-3">
+        Product added to trending section!
+      </p>
+    )}
+  </div>
+)}
 
 export default Searchbar
