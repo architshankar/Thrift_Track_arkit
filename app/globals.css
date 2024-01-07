@@ -30,7 +30,7 @@
 
   .section-text {
     @apply text-secondary 
-    text-[32px] font-semibold;
+    text-[40px] font-semibold;
   }
 
   .small-text {
@@ -46,6 +46,11 @@
   .hero-carousel {
     @apply relative sm:px-10 py-5 sm:pt-20 pb-5 max-w-[500px] 
     h-[600px] w-full bg-[#F2F4F7] rounded-[20px] sm:mx-auto;
+  }
+
+  .Product-card-update {
+    @apply relative sm:px-10 py-2 sm:pt-2 pb-5
+     max-w-[500px] h-[auto] w-full bg-[#ffffff] rounded-[20px] sm:mx-auto shadow-md;
   }
 
   .carousel {
@@ -172,6 +177,9 @@
 
   .product-title {
     @apply text-secondary text-xl leading-6 font-semibold truncate;
+  }
+  .product-added {
+    @apply text-green-400 text-xl leading-6 font-semibold truncate;
   }
 
   /* SEARCHBAR INPUT */

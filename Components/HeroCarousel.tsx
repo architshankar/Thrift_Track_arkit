@@ -20,7 +20,7 @@ const HeroCarousel = () => {
         <Carousel
         showThumbs={false}
         autoPlay
-        //infiniteLoop
+        infiniteLoop
         interval={2000}
         showArrows={false}
         showStatus={false}
@@ -42,7 +42,7 @@ const HeroCarousel = () => {
             alt='arrow'
             height={175}
             width={175}
-            className='max-xl:hidden absolute -left-[15%] bottom-0 z-0'
+            className='max-xl:hidden absolute -left-[15%] bottom-[-65px] z-0'
         />
     </div>
   )
